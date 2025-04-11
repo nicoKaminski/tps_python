@@ -91,6 +91,7 @@ def ejercicio6():
     print(suma)
 
 
+
 #Ejercicio 7
 # Dadas dos listas, una con nombres y otra con apellidos, usá zip para generar una lista con
 # los nombres completos.
