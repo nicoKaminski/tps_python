@@ -4,9 +4,16 @@ Este repositorio contiene los ejercicios y trabajos prácticos realizados para l
 
 **Estructura de Carpetas:**
 
+- **`pruebas/`**: Contiene ejercicios y pruebas adicionales.
 - **`tp1/`**: Contiene los ejercicios correspondientes al Trabajo Práctico número 1.
 - **`tp2/`**: Contiene los ejercicios correspondientes al Trabajo Práctico número 2.
-- (Se irán agregando más carpetas a medida que avancemos en la materia: `tp3/`, `tp4/`, etc.)
+- **`tp3/`**: Contiene los ejercicios correspondientes al Trabajo Práctico número 3.
+- **`tp4/`**: Contiene los ejercicios correspondientes al Trabajo Práctico número 4.
+- (Se irán agregando más carpetas a medida que avancemos en la materia: `tp2/`, `tpn/`, etc.)
+
+- **Pruebas (`pruebas/`)**:
+  - **Objetivo:** Exploración de la manipulación de archivos JSON para la gestión de datos.
+  - **Archivo Principal:** `agenda_json.py` - Implementa una agenda de contactos que guarda la información en un archivo `contactos.json`. Permite agregar y mostrar contactos a través de un menú interactivo.
 
 **Notas:**
 
