@@ -1,0 +1,7 @@
+linea 1
+linea 2
+error
+linea 3
+error error
+linea 4
+error
