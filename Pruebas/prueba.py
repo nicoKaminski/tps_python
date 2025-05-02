@@ -145,4 +145,22 @@ class ejemplo:
 obj = ejemplo(5)
 obj.mostrar_info()
 """
+"""
+objeto = map(lambda x: x*2, [1, 2, 3])
+print(list(objeto))
+"""
+"""
+def f(a, b=[]):
+    b.append(a)
+    return b
 
+print(f(1))
+print(f(2))
+print(f(3))
+"""
+def incremento (x, step=1): # PARAMETRO
+    count = 0
+    count += x * step
+    return count
+
+print(incremento(5)) # ARGUMENTO
