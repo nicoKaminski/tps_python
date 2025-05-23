@@ -12,6 +12,7 @@ Este repositorio contiene los ejercicios y trabajos prácticos realizados para l
 - **`tp5/`**: Contiene los ejercicios correspondientes al Trabajo Práctico número 5.
 - **`tp6/`**: Contiene los ejercicios correspondientes al Trabajo Práctico número 6.
 - **`tp7/`**: Contiene los ejercicios correspondientes al Trabajo Práctico número 7.
+- **`tp8/`**: Contiene los ejercicios correspondientes al Trabajo Práctico número 8.
 - (Se irán agregando más carpetas a medida que avancemos en la materia: `tp2/`, `tpn/`, etc.)
 
 - **Pruebas (`pruebas/`)**:

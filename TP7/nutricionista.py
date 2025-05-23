@@ -71,6 +71,7 @@ class NutricionistaRepo:
             self.conn.execute("INSERT INTO alimentos (nombre, calorias) VALUES ('Cereal', 150)")
             self.conn.execute("INSERT INTO alimentos (nombre, calorias) VALUES ('Cafe', 0)")
 
+    # CRUD de PlanComida
     def agregar_plan_comida(self, plan: PlanComida):
         with self.conn: #abre y cierra la conexion
             self.conn.execute('''
@@ -92,19 +93,62 @@ class NutricionistaRepo:
         for fila in cur.fetchall():
             print(f"{fila['fecha']}: {fila['paciente']} comió {fila['cantidad']} porciones de {fila['alimento']} ({fila['calorias_totales']} kcal)")
 
+    def obtener_planes(self):
+        cur = self.conn.cursor()
+        cur.execute('''
+            SELECT pc.id, pc.fecha, pc.cantidad,
+                pa.nombre AS paciente,
+                al.nombre AS alimento,
+                al.calorias * pc.cantidad AS calorias_totales
+            FROM plan_comidas pc
+            JOIN pacientes pa ON pc.paciente_id = pa.id
+            JOIN alimentos al ON pc.alimento_id = al.id
+        ''')
+        return cur.fetchall()
+
+    def eliminar_plan_comida(self, plan_id):
+        with self.conn:
+            self.conn.execute('DELETE FROM plan_comidas WHERE id = ?', (plan_id,))
+
+    # CRUD de Paciente
+    def agregar_paciente(self, paciente: Paciente):
+        with self.conn: #abre y cierra la conexion
+            self.conn.execute('''
+                INSERT INTO pacientes (nombre, edad, peso_actual)
+                VALUES (?, ?, ?)
+            ''', (paciente.nombre, paciente.edad, paciente.peso_actual))
+
     def actualizar_peso(self, paciente_id, nuevo_peso):
         with self.conn:
             self.conn.execute('''
                 UPDATE pacientes SET peso_actual = ? WHERE id = ?
             ''', (nuevo_peso, paciente_id))
 
-    def eliminar_plan_comida(self, plan_id):
-        with self.conn:
-            self.conn.execute('DELETE FROM plan_comidas WHERE id = ?', (plan_id,))
-
     def eliminar_paciente(self, paciente_id):
         with self.conn:
             self.conn.execute('DELETE FROM pacientes WHERE id = ?', (paciente_id,))
+    
+    def listar_pacientes(self):
+        cur = self.conn.cursor() #crea un cursor (el cursor es para recorrer la base de datos y ejecutar consultas)
+        cur.execute('SELECT * FROM pacientes')
+        return cur.fetchall()
+    
+    # CRUD de Alimento
+    def agregar_alimento(self, alimento: Alimento):
+        with self.conn: #abre y cierra la conexion
+            self.conn.execute('''
+                INSERT INTO alimentos (nombre, calorias)
+                VALUES (?, ?)
+            ''', (alimento.nombre, alimento.calorias))
+    
+    def listar_alimentos(self):
+        cur = self.conn.cursor() #crea un cursor (el cursor es para recorrer la base de datos y ejecutar consultas)
+        cur.execute('SELECT * FROM alimentos')
+        return cur.fetchall()
+
+    def eliminar_alimento(self, alimento_id):
+        with self.conn:
+            self.conn.execute('DELETE FROM alimentos WHERE id = ?', (alimento_id,))
 
 
 if __name__ == "__main__":

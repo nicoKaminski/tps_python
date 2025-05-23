@@ -158,9 +158,34 @@ print(f(1))
 print(f(2))
 print(f(3))
 """
+"""
 def incremento (x, step=1): # PARAMETRO
     count = 0
     count += x * step
     return count
 
 print(incremento(5)) # ARGUMENTO
+"""
+"""
+import tkinter as tk
+
+def saludar():
+    nombre = entrada.get() # Obtiene el texto de la entrada
+    etiqueta.config(text=f"¡Hola, {nombre}!") # Cambia el texto de la etiqueta
+
+ventana = tk.Tk() # Crea la ventana
+ventana.title("Saludo") # Cambia el nombre de la ventana
+ventana.geometry("200x100") # Cambia el tamaño de la ventana
+
+etiqueta = tk.Label(ventana, text="Tu nombre:") # Crea la etiqueta
+etiqueta.pack() # Muestra la etiqueta
+
+entrada = tk.Entry(ventana) # Crea la entrada
+entrada.pack() # Muestra la entrada
+
+boton = tk.Button(ventana, text="Saludar", command=saludar) # Crea el botón
+boton.pack() # Muestra el botón
+
+ventana.mainloop()
+"""
+
